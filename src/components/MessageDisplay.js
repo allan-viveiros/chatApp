@@ -1,149 +1,77 @@
-import { getDatabase, ref, onValue, get } from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 import { useEffect, useState } from "react";
 import app from "../firebase.js";
 import Message from "./Message.js"
 
-const MessageDisplay = ({userRecip, userSend}) => {
-    // const [chatId, setChatId] = useState("");
-    // const [messages, setMessages] = useState([]);
+const MessageDisplay = ({chatKey}) => {
+    const [chatId, setChatId] = useState("");
+    const [chats, setChats] = useState([]);
    
-    // useEffect(() => {
+    console.log(chatKey);
+    console.log(chats);
+
+    useEffect(() => {
+        console.log("useEffect message Display");
         const db = getDatabase(app);
-        const dbRef = ref(db, `/users/${userRecip}`);
+        const dbRef = ref(db, `/chats/${chatKey}`); 
+        
 
-        let chatId = "";
-        const arrayOfMessages = [];
+        onValue(dbRef, (result) => {
+            console.log(result.val());
 
-        get(dbRef)
-        .then((response) => {
-            if(response.exists) {
-                // console.log("response.val()");
-                // console.log(response.val());
-                const userChatObj = response.val();
-                // const userChat = [];
-                // console.log(response.val().chats)
-                
+            const messagesObj = result.val();
+            const arr = [];
 
-                if(userChatObj.chats) {
-                    let chatExists = false;
-                    console.log("exist some chats");
+            for(let msg in messagesObj) {
+                // console.log(msg);
+                console.log(messagesObj[msg]);
+                // console.log(messagesObj);
+                const arr2 = messagesObj[msg];
 
-                    for(let chatIndex in userChatObj.chats) {
-                        // console.log(chatIndex);
-                        // console.log(userChatObj.chats);
-                        // console.log(userChatObj.chats[chatIndex].userId);
+                for(let i in arr2) {
+                    console.log(arr2[i]);
 
-                        if(userChatObj.chats[chatIndex].userId === userSend) {
-                            chatExists = true;
-                            // console.log(userChatObj.chats[chatIndex].chatId);
-                            // setChatId(userChatObj.chats[chatIndex].chatId);
-                            chatId = userChatObj.chats[chatIndex].chatId;
-                            console.log(`chatId inside: ${chatId}`);
-                        }
+                    const newMsgObj = {
+                        from: arr2[i].from,
+                        message: arr2[i].message,
+                        time: arr2[i].time
                     }
 
-                    // exist some chats, but there was no match.
-                    if(chatExists === false) {
-                        // create a new chat between the users
-                        console.log(`Create a chat between ${userSend} and ${userRecip}`);
-                    }
-
-
-
+                    arr.push(newMsgObj);
                 }
-                else {
-                    console.log("there is no Chats Available!");
-                    console.log(`Create a chat between ${userSend} and ${userRecip}`);
-                }
+
+                setChats(arr);
                 
-            }
-            else {
-                console.log("No data Available!");
+                
+                // const newMsgObj = {
+                //     from: messagesObj[msg].from,
+                //     message: messagesObj[msg].message,
+                //     time: messagesObj[msg].time
+                // }
+
+                // arrayOfMessages.push(newMsgObj);
             }
 
-            console.log(`chatID: ${chatId}`);
-
-            const dbChat = getDatabase(app);
-            const dbChatRef = ref(dbChat, `/chats/${chatId}`);
-            onValue(dbChatRef, (chatResponse) => {
-                const chatObj = chatResponse.val();
-                console.log(chatObj);
-
-                // const arrayOfMessages = [];
-
-                for(let index in chatObj) {
-                    // console.log(index);
-                    // console.log(chatObj[index]);
-
-                    const messageObj = {
-                        message: chatObj[index].message,
-                        time: chatObj[index].time,
-                        from: chatObj[index].from
-                    }
-
-                    arrayOfMessages.push(messageObj);
-                }
-
-                // setMessages(arrayOfMessages);
-            });
-
-            console.log("arrayOfMessages1");
-            console.log(arrayOfMessages);
+            // console.log(arrayOfMessages);
+            // setChats(arrayOfMessages);
 
         });
+        
+    }, []);
 
 
-        console.log("arrayOfMessages2");
-        console.log(arrayOfMessages);
+    console.log(chats);
 
-    
-    // }, );
-
-    // useEffect(() => {
-        // console.log("useEffect2");
-        // console.log(`chatID: ${chatId}`);
-
-        // const dbChat = getDatabase(app);
-        // const dbChatRef = ref(dbChat, `/chats/${chatId}`);
-        // onValue(dbChatRef, (chatResponse) => {
-        //     const chatObj = chatResponse.val();
-        //     console.log(chatObj);
-
-        //     const arrayOfMessages = [];
-
-        //     for(let index in chatObj) {
-        //         // console.log(index);
-        //         // console.log(chatObj[index]);
-
-        //         const messageObj = {
-        //             message: chatObj[index].message,
-        //             time: chatObj[index].time,
-        //             from: chatObj[index].from
-        //         }
-
-        //         arrayOfMessages.push(messageObj);
-        //     }
-
-        //     // setMessages(arrayOfMessages);
-        // });
-
-
-    // },[] );
-
-    // console.log(chatId);
-    // const db = getDatabase(app);
-    // const dbRef = ref(db, `/chats/${chatId}`);
-    // onValue();
 
     return(
         <section>
             <h2>Messages here</h2>
             
-            <p>Messages from {userSend}</p>
-            <p>To: {userRecip} </p>
+            {/* <p>Messages from {userSend}</p>
+            <p>To: {userRecip} </p> */}
 
-            {/* {
-                arrayOfMessages.map((message, index) => {
+            {
+                chats.map((message, index) => {
                     return (
                         <Message 
                             key={index}
@@ -153,7 +81,7 @@ const MessageDisplay = ({userRecip, userSend}) => {
                         />
                     )
                 })
-            } */}
+            }
             
         </section>
     )

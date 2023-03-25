@@ -1,11 +1,11 @@
 import "./App.css";
-import ChatContainer from "./components/ChatContainer.js";
+import UserContainer from "./components/UserContainer.js";
 
 function App() {
   return (
     <div className="App">
 
-      <ChatContainer />
+      <UserContainer />
       
     </div>
   );
