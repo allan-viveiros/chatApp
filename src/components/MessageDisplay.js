@@ -4,7 +4,7 @@ import app from "../firebase.js";
 import Message from "./Message.js"
 
 const MessageDisplay = ({chatKey}) => {
-    const [chatId, setChatId] = useState("");
+    // const [chatId, setChatId] = useState("");
     const [chats, setChats] = useState([]);
    
     console.log(chatKey);
@@ -40,20 +40,8 @@ const MessageDisplay = ({chatKey}) => {
                     arr.push(newMsgObj);
                 }
 
-                setChats(arr);
-                
-                
-                // const newMsgObj = {
-                //     from: messagesObj[msg].from,
-                //     message: messagesObj[msg].message,
-                //     time: messagesObj[msg].time
-                // }
-
-                // arrayOfMessages.push(newMsgObj);
+                setChats(arr);                
             }
-
-            // console.log(arrayOfMessages);
-            // setChats(arrayOfMessages);
 
         });
         
@@ -64,7 +52,7 @@ const MessageDisplay = ({chatKey}) => {
 
 
     return(
-        <section>
+        <section className="messages">
             <h2>Messages here</h2>
             
             {/* <p>Messages from {userSend}</p>

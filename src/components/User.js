@@ -13,7 +13,7 @@ const User = ({handleSubmit, userArray}) => {
             <h2> Select your user to start the chat</h2>
             <form id="userForm" onSubmit={(e) => handleSubmit(e, selectedValue)}>
 
-                <label htmlFor="selectUser"></label>
+                <label htmlFor="selectUser" className="sr-only">Select user</label>
                 <select id="selectUser" onChange={handleChange} value={selectedValue}>
                     <option value="placeholder"> Select your user to start the chat</option>
                     {
@@ -26,7 +26,7 @@ const User = ({handleSubmit, userArray}) => {
                         })
                     }
                     </select>
-                <button>Start chat</button>
+                <button id="btnStartChat">Start chat</button>
             </form>
         </section>
     )

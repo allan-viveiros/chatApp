@@ -165,7 +165,7 @@ const ChatContainer = ({userSender}) => {
     // }
 
     return(
-        <section>
+        <section className="chatContainer">
 
             <UserToTalk userArray={users} handleSubmit={handleSubmitForm}/>
 

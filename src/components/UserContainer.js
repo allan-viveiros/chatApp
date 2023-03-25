@@ -96,16 +96,17 @@ const UserContainer = () => {
     }
 
     return(
-        <section>
+        <section className="userContainer">
+            <div className="wrapper">
             <h1>User Container</h1>
 
-            {
-                userSelected === ""
-                ?   <User handleSubmit={handleSubmitForm} userArray={users} />
-                :   <ChatContainer userSender= {userSelected}/>
-            }
+                {
+                    userSelected === ""
+                    ?   <User handleSubmit={handleSubmitForm} userArray={users} />
+                    :   <ChatContainer userSender= {userSelected}/>
+                }
             
-            
+            </div>
         </section>
     )
 }

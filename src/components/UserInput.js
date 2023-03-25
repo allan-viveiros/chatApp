@@ -9,11 +9,11 @@ const UserInput = ({ handleSubmit }) => {
     }
 
     return(
-        <section>
-            <h3>Type your message</h3>
-            <form onSubmit={(e) => handleSubmit(e, userInputText)}>
-                <label htmlFor="userMessage">Message:</label>
-                <input 
+        <section className="userInput">
+            
+            <form onSubmit={(e) => handleSubmit(e, userInputText)} className="flexForm">
+                <label htmlFor="userMessage" className="sr-only">Type your message</label>
+                <textarea 
                     type="text" 
                     id="userMessage" 
                     onChange={handleChange} 
