@@ -1,12 +1,28 @@
 
-const Message = ({from, time, message}) => {
-    console.log(message);
+const Message = ({from, time, message, userSender}) => {
+    // console.log(message, userSender.userId);
+    let classSwitch = "";
+    let imgSwitch = "";
+
+    if(userSender.userId === from) {
+        classSwitch = "sender";
+        imgSwitch = "https://placekitten.com/50/50";
+    }
+    else {
+        classSwitch = "recipient";
+        imgSwitch = "https://placebear.com/50/50";
+    }
+
     return(
-        <>
-            <p>from: {from}</p>
-            <p>time: {time}</p>
-            <p>message: {message}</p>
-        </>
+        <div className={classSwitch}>
+            <p className="chatMsg">{message}</p>
+            <div className="avatar">
+                <div className="imgContainer">
+                    <img src={imgSwitch} alt="Avatar"></img>
+                </div>
+                <p className="time">{time}</p>
+            </div>            
+        </div>
     )
 }
 

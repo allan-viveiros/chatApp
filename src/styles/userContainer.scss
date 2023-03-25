@@ -52,13 +52,88 @@
         }
 
         // middle section
-        .messages {
+        .messagesDisplay {
             height: 82%;
             overflow-x: hidden;
             overflow-y: auto;
             scroll-behavior: auto;
             
             border: 1px solid black;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;            
+
+            .sender {
+                // background-color: aqua;
+                width: 60%;
+                // border-radius: 10px;
+                margin: 10px;
+                padding: 10px;
+                position: relative;
+                left: 15%;                     
+                display: flex;
+                justify-content: space-between;                
+
+                p.chatMsg {
+                    text-align: right;
+                    width: 80%;
+                    background-color: aqua;
+                    border-radius: 10px;
+                    padding: 10px;
+                    overflow: hidden;
+                }
+
+                .avatar {
+                    width: 18%;
+                    // border: 1px solid black;
+
+                    .imgContainer {
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+
+                    p.time {
+                        font-size: 0.7rem;
+                    }
+                }
+            }
+
+            .recipient {
+                // background-color: aquamarine;
+                width: 60%;
+                border-radius: 10px;
+                margin: 10px;
+                padding: 10px;
+                position: relative;
+                right: 15%;
+
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+
+                p.chatMsg {
+                    text-align: left;
+                    width: 80%;
+                    background-color: aquamarine;
+                    border-radius: 10px;
+                    padding: 10px;
+                    overflow: hidden;
+                }
+
+                .avatar {
+                    width: 18%;
+                    
+                    .imgContainer {
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+
+                    p.time {
+                        font-size: 0.7rem;
+                    }
+                }
+            }
         }
 
         // bottom section 

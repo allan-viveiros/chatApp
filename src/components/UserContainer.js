@@ -21,25 +21,24 @@ const UserContainer = () => {
                 const userObj = respDB.val();
                 setUsers(userObj);
 
-
                 const arrayOfUsers = [];
 
                 for(let id in userObj) {
                     const arrayOfUserChats = [];                    
                     const userChats = userObj[id].chats; 
                            
-                    if(userChats) {
-                        // console.log("exists chat");  
-                        // console.log(userChats);  
-                        userChats.forEach(element => {
-                            // console.log(element);
+                    if(userChats) {                        
+                        // console.log(userChats);
+                        for(let index in userChats) {
+                            // console.log(userChats[index]);
+
                             const newUserObjChat = {
-                                chatId: element.chatId,
-                                userId: element.userId                            
+                                chatId: userChats[index].chatId,
+                                userId: userChats[index].userId
                             }
 
                             arrayOfUserChats.push(newUserObjChat);
-                        });                        
+                        }
                     }
 
                     const newUserObj = {
@@ -54,10 +53,9 @@ const UserContainer = () => {
                 }
 
                 setUsers(arrayOfUsers);
-
             }
             else {
-                console.log("There is no users to show!");
+                alert("There is no users to show!");
             }
         })
 
@@ -98,7 +96,7 @@ const UserContainer = () => {
     return(
         <section className="userContainer">
             <div className="wrapper">
-            <h1>User Container</h1>
+            <h1>Chat App</h1>
 
                 {
                     userSelected === ""
