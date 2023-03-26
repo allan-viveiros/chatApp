@@ -16,7 +16,7 @@ const UserToTalk = ({userArray, handleSubmit}) => {
             <form id="userToTalkForm" onSubmit={(e) => handleSubmit(e, selectedValue)}>
 
                 <label htmlFor="selectUser" className="sr-only">Select an user to talk with</label>
-                <select id="selectUser" onChange={handleChange} value={selectedValue}>
+                <select id="selectUser" onChange={handleChange} value={selectedValue} onSelect={(e) => handleSubmit(e, selectedValue)}>
                     <option value="placeholder"> Select an user to talk with</option>
                     {
                         userArray.map((user) => {                            
@@ -27,7 +27,7 @@ const UserToTalk = ({userArray, handleSubmit}) => {
                     }                    
 
                 </select>
-                <button>Go chat</button>
+                <button>Go Chat</button>
             </form>
         </div>
     )
