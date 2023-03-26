@@ -10,7 +10,7 @@ const ChatContainer = ({userSender}) => {
     const [userRecipient, setUserRecipient] = useState("");
     const [chatKey, setChatKey] = useState("");
     // const [userInput, setUserInput] = useState("");
-    // const [messages, setMessages] = useState([]);  
+    // const [messages, setMessages] = useState("");  
     
     // connect with the database
     useEffect(() => {
@@ -73,71 +73,74 @@ const ChatContainer = ({userSender}) => {
         if(userRecipient !== "") {
             console.log("User Recipient inside");
             console.log(userRecipient);
-            const userRecipChat = userRecipient.chats;
-            let historic = false;
+            // const userRecipChat = userRecipient.chats;
+            // let historic = false;
 
-            //TODO - BUILD THE CHATKEY INSTEAD TO CHECK FOR A REFERENCE
+            // //TODO - BUILD THE CHATKEY INSTEAD TO CHECK FOR A REFERENCE
 
-            for(let chatId in userRecipChat) {            
-                // console.log(chatId);
-                // console.log(userRecipChat);
-                if(userRecipChat[chatId].userId === userSender.userId){
-                    console.log("match");
-                    // console.log(userRecipChat[chatId].chatId);
-                    setChatKey(userRecipChat[chatId].chatId);
-                    historic = true;
-                    console.log(userRecipChat[chatId].chatId);
-                }            
-            }
+            // for(let chatId in userRecipChat) {            
+            //     // console.log(chatId);
+            //     // console.log(userRecipChat);
+            //     if(userRecipChat[chatId].userId === userSender.userId){
+            //         console.log("match");
+            //         // console.log(userRecipChat[chatId].chatId);
+            //         const testKey = userRecipChat[chatId].chatId;
+            //         setChatKey(testKey);
+            //         historic = true;
+            //         console.log(testKey);
+            //     }            
+            // }
 
-            if(historic === false) {
-                console.log("There is no chat available, create a new one!");
+            // if(historic === false) {
+            //     console.log("There is no chat available, create a new one!");
 
-                let userUniqueKey = "";
+            //     let userUniqueKey = "";
 
-                if(userSender.userId > userRecipient.userId){
-                    userUniqueKey = userRecipient.userId+userSender.userId;
-                }
-                else {
-                    userUniqueKey = userSender.userId+userRecipient.userId;
-                }
+            //     if(userSender.userId > userRecipient.userId){
+            //         userUniqueKey = userRecipient.userId+userSender.userId;
+            //     }
+            //     else {
+            //         userUniqueKey = userSender.userId+userRecipient.userId;
+            //     }
 
-                setChatKey(userUniqueKey);
+            //     setChatKey(userUniqueKey);
                 
-                console.log(userSender.userId);
-                console.log(userRecipient.userId);
-                console.log(userUniqueKey);
+            //     console.log(userSender.userId);
+            //     console.log(userRecipient.userId);
+            //     console.log(userUniqueKey);
 
-                const newChatIdSender = {                    
-                    chatId: userUniqueKey,
-                    userId: userRecipient.userId
-                }
+            //     const newChatIdSender = {                    
+            //         chatId: userUniqueKey,
+            //         userId: userRecipient.userId
+            //     }
 
-                const newChatIdRecipient = {                    
-                    chatId: userUniqueKey,
-                    userId: userSender.userId
-                }
+            //     const newChatIdRecipient = {                    
+            //         chatId: userUniqueKey,
+            //         userId: userSender.userId
+            //     }
 
-                const db = getDatabase(app);
-                const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
-                const dbRefRecipient = ref(db, `/users/${userRecipient.userId}/chats`);
+            //     const db = getDatabase(app);
+            //     const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
+            //     const dbRefRecipient = ref(db, `/users/${userRecipient.userId}/chats`);
 
-                // console.log(dbRef);
+            //     // console.log(dbRef);
 
-                const NewChatIdSender = push(dbRefSender, newChatIdSender);
-                console.log(NewChatIdSender);   
+            //     const NewChatIdSender = push(dbRefSender, newChatIdSender);
+            //     console.log(NewChatIdSender);   
 
-                const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
-                console.log(NewChatIdRecipient);
-            }
+            //     const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
+            //     console.log(NewChatIdRecipient);
+            // }
 
             // connect to Firebase to bring the messages
             //  **************************************************** 
             // const db = getDatabase(app);
-            // const dbRef = ref(db, `/chats/${chatId}`);        
+            // const dbRef = ref(db, `/chats/${chatKey}`); 
+            
+            // console.log(dbRef);
 
             // onValue(dbRef, (result) => {
-            //     // console.log(result.val());
+            //     console.log(typeof result.val());
             //     setMessages(result.val());
             // });
         }
@@ -166,12 +169,78 @@ const ChatContainer = ({userSender}) => {
         if(userId !== "placeholder") {
             console.log(userId);
             // setUserRecipient(userId);
+            let userRecipChat = "";
+
             for(let id in users) {
                 if(users[id].userId === userId) {
                     // console.log(users[id]);
                     setUserRecipient(users[id]);
+
+                    userRecipChat = users[id].chats;
                 }
             }
+
+            //***********************************
+            // const userRecipChat = userRecipient.chats;
+            let historic = false;
+
+            //TODO - BUILD THE CHATKEY INSTEAD TO CHECK FOR A REFERENCE
+
+            for(let chatId in userRecipChat) {            
+                // console.log(chatId);
+                // console.log(userRecipChat);
+                if(userRecipChat[chatId].userId === userSender.userId){
+                    console.log("match");
+                    // console.log(userRecipChat[chatId].chatId);
+                    const testKey = userRecipChat[chatId].chatId;
+                    setChatKey(testKey);
+                    historic = true;
+                    console.log(testKey);
+                }            
+            }
+
+            if(historic === false) {
+                console.log("There is no chat available, create a new one!");
+
+                // let userUniqueKey = "";
+
+                // if(userSender.userId > userRecipient.userId){
+                //     userUniqueKey = userRecipient.userId+userSender.userId;
+                // }
+                // else {
+                //     userUniqueKey = userSender.userId+userRecipient.userId;
+                // }
+
+                // setChatKey(userUniqueKey);
+                
+                // console.log(userSender.userId);
+                // console.log(userRecipient.userId);
+                // console.log(userUniqueKey);
+
+                // const newChatIdSender = {                    
+                //     chatId: userUniqueKey,
+                //     userId: userRecipient.userId
+                // }
+
+                // const newChatIdRecipient = {                    
+                //     chatId: userUniqueKey,
+                //     userId: userSender.userId
+                // }
+
+                // const db = getDatabase(app);
+                // const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
+                // const dbRefRecipient = ref(db, `/users/${userRecipient.userId}/chats`);
+
+                // // console.log(dbRef);
+
+                // const NewChatIdSender = push(dbRefSender, newChatIdSender);
+                // console.log(NewChatIdSender);   
+
+                // const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
+                // console.log(NewChatIdRecipient);
+            }
+            //***********************************
+
         }
         else {
             alert("Please select an user!");
@@ -227,7 +296,9 @@ const ChatContainer = ({userSender}) => {
                 
     }
 
+    // setChatKey("ksjadlkdsjald");
     console.log(chatKey);
+    
     return(
         <section className="chatContainer">
 
@@ -235,7 +306,10 @@ const ChatContainer = ({userSender}) => {
 
             {
                 userRecipient !== "" 
-                ?   <MessageDisplay chatKey={chatKey} sender={userSender} />
+                ?   <MessageDisplay 
+                        chatKey={chatKey} 
+                        sender={userSender}
+                    />
                 :   null
             }
 
