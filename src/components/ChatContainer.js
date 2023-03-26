@@ -152,16 +152,16 @@ const ChatContainer = ({userSender}) => {
 
 
     
-    useEffect(() => {
-        if(chatKey === ""){
-            console.log("there is no CHATKEY");
-        }
-        else {
-            console.log("chatKey");
-            console.log(chatKey);
-        }        
+    // useEffect(() => {
+    //     if(chatKey === ""){
+    //         console.log("there is no CHATKEY");
+    //     }
+    //     else {
+    //         console.log("chatKey");
+    //         console.log(chatKey);
+    //     }        
 
-    }, [chatKey])
+    // }, [chatKey])
 
     const handleSubmitForm = (e, userId) => {
         e.preventDefault();
@@ -202,42 +202,42 @@ const ChatContainer = ({userSender}) => {
             if(historic === false) {
                 console.log("There is no chat available, create a new one!");
 
-                // let userUniqueKey = "";
+                let userUniqueKey = "";
 
-                // if(userSender.userId > userRecipient.userId){
-                //     userUniqueKey = userRecipient.userId+userSender.userId;
-                // }
-                // else {
-                //     userUniqueKey = userSender.userId+userRecipient.userId;
-                // }
+                if(userSender.userId > userId){
+                    userUniqueKey = userId+userSender.userId;
+                }
+                else {
+                    userUniqueKey = userSender.userId+userId;
+                }
 
-                // setChatKey(userUniqueKey);
+                setChatKey(userUniqueKey);
                 
-                // console.log(userSender.userId);
-                // console.log(userRecipient.userId);
-                // console.log(userUniqueKey);
+                console.log(userSender.userId);
+                console.log(userId);
+                console.log(userUniqueKey);
 
-                // const newChatIdSender = {                    
-                //     chatId: userUniqueKey,
-                //     userId: userRecipient.userId
-                // }
+                const newChatIdSender = {                    
+                    chatId: userUniqueKey,
+                    userId: userId
+                }
 
-                // const newChatIdRecipient = {                    
-                //     chatId: userUniqueKey,
-                //     userId: userSender.userId
-                // }
+                const newChatIdRecipient = {                    
+                    chatId: userUniqueKey,
+                    userId: userSender.userId
+                }
 
-                // const db = getDatabase(app);
-                // const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
-                // const dbRefRecipient = ref(db, `/users/${userRecipient.userId}/chats`);
+                const db = getDatabase(app);
+                const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
+                const dbRefRecipient = ref(db, `/users/${userId}/chats`);
 
-                // // console.log(dbRef);
+                // console.log(dbRef);
 
-                // const NewChatIdSender = push(dbRefSender, newChatIdSender);
-                // console.log(NewChatIdSender);   
+                const NewChatIdSender = push(dbRefSender, newChatIdSender);
+                console.log(NewChatIdSender);   
 
-                // const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
-                // console.log(NewChatIdRecipient);
+                const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
+                console.log(NewChatIdRecipient);
             }
             //***********************************
 
@@ -276,10 +276,15 @@ const ChatContainer = ({userSender}) => {
         // console.log(userSender);
         // console.log(chatId);
 
+        const current = new Date().toString();        
+        const day = current.slice(8, 10);
+        const month = current.slice(4, 7);        
+        const hour = current.slice(16, 21);
+
         const inputObj = {
             from: userSender.userId,
             message: userInput,
-            time: "now"
+            time: `${month} ${day}, ${hour}`
         }
 
         const db = getDatabase(app);
@@ -296,7 +301,6 @@ const ChatContainer = ({userSender}) => {
                 
     }
 
-    // setChatKey("ksjadlkdsjald");
     console.log(chatKey);
     
     return(

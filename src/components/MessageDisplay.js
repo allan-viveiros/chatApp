@@ -11,9 +11,20 @@ const MessageDisplay = ({chatKey, sender}) => {
     console.log(sender);
     // console.log(chatMessages);
 
-    if(chatKey === "") {
-        console.log("LOADING 2...........");
-    }
+    // if(chatKey === "") {
+    //     console.log("LOADING 2...........");
+    // }
+
+    // useEffect(() => {
+    //     if(chatKey === ""){
+    //         console.log("there is no CHATKEY");
+    //     }
+    //     else {
+    //         console.log("chatKey");
+    //         console.log(chatKey);
+    //     }        
+
+    // }, [chatKey])
 
     useEffect(() => {        
         console.log(chatKey);
@@ -54,6 +65,11 @@ const MessageDisplay = ({chatKey, sender}) => {
             else {
                 console.log("result.val() DON'T exists");
 
+                const current = new Date().toString();        
+                const day = current.slice(8, 10);
+                const month = current.slice(4, 7);        
+                const hour = current.slice(16, 21);
+
                 const arr = [];
                 
                 const db = getDatabase(app);
@@ -62,7 +78,7 @@ const MessageDisplay = ({chatKey, sender}) => {
                 const inputChatObj = {
                     from: "Message",
                     message: "Welcome to the chat!",
-                    time: "now"
+                    time: `${month} ${day}, ${hour}`
                 }
 
                 arr.push(inputChatObj);
@@ -75,7 +91,7 @@ const MessageDisplay = ({chatKey, sender}) => {
         });
 
                    
-    }, []);
+    }, [chatKey]);
 
 
     // console.log(chats);

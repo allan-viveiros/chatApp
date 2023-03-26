@@ -134,6 +134,60 @@
                     }
                 }
             }
+
+            .messageApp {
+                background-color: coral;
+                width: 80%;
+                border-radius: 10px;
+                margin: 10px auto;
+                padding: 10px;
+                // position: relative;
+                // right: 15%;
+
+                display: flex;      
+                flex-direction: column-reverse;          
+                // justify-content: center;
+                // justify-items: center;
+                align-items: center;
+
+                
+                // border: 1px solid black;
+
+
+                p.chatMsg {
+                    text-align: left;
+                    width: 80%;
+                    // background-color: orange;
+                    border-radius: 10px;
+                    padding: 10px;
+                    overflow: hidden;
+                    text-align: center;
+                    font-size: 2rem;
+
+                    // border: 1px solid red;
+
+                }
+
+                .avatar {
+                    width: 20%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    // border: 1px solid blue;
+                    
+                    .imgContainer {
+                        max-height: 50px;
+                        max-width: 50px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+
+                    p.time {
+                        font-size: 0.7rem;
+                    }
+                }
+            }
         }
 
         // bottom section 

@@ -4,9 +4,15 @@ const Message = ({from, time, message, userSender}) => {
     let classSwitch = "";
     let imgSwitch = "";
 
-    if(userSender.userId === from) {
+    console.log(userSender.userId);
+
+    if(from === userSender.userId) {
         classSwitch = "sender";
         imgSwitch = "https://placekitten.com/50/50";
+    }
+    else if(from === "Message") {
+        classSwitch="messageApp";
+        imgSwitch = "https://placekitten.com/40/40";
     }
     else {
         classSwitch = "recipient";
