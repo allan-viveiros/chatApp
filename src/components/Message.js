@@ -8,17 +8,17 @@ const Message = ({from, time, message, userSender}) => {
 
     if(from === userSender.userId) {
         classSwitch = "sender";
-        imgSwitch = "https://placekitten.com/50/50";
+        imgSwitch = `https://robohash.org/${from}.png`;
     }
     else if(from === "Message") {
         classSwitch="messageApp";
-        imgSwitch = "https://placekitten.com/40/40";
+        imgSwitch = `https://robohash.org/${from}.png`;
     }
     else {
         classSwitch = "recipient";
-        imgSwitch = "https://placebear.com/50/50";
+        imgSwitch = `https://robohash.org/${from}.png`;
     }
-
+ 
     return(
         <div className={classSwitch}>
             <p className="chatMsg">{message}</p>

@@ -64,16 +64,14 @@
             flex-direction: column;
             align-items: center;            
 
-            .sender {
-                // background-color: aqua;
+            .sender { 
                 width: 60%;
-                // border-radius: 10px;
                 margin: 10px;
                 padding: 10px;
                 position: relative;
                 left: 15%;                     
                 display: flex;
-                justify-content: space-between;                
+                justify-content: space-around;                
 
                 p.chatMsg {
                     text-align: right;
@@ -86,9 +84,13 @@
 
                 .avatar {
                     width: 18%;
-                    // border: 1px solid black;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
                     .imgContainer {
+                        max-width: 50px;
+                        max-height: 50px;
                         border-radius: 50%;
                         overflow: hidden;
                     }
@@ -100,7 +102,6 @@
             }
 
             .recipient {
-                // background-color: aquamarine;
                 width: 60%;
                 border-radius: 10px;
                 margin: 10px;
@@ -110,7 +111,7 @@
 
                 display: flex;
                 flex-direction: row-reverse;
-                justify-content: space-between;
+                justify-content: space-between;                
 
                 p.chatMsg {
                     text-align: left;
@@ -123,10 +124,20 @@
 
                 .avatar {
                     width: 18%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     
                     .imgContainer {
+                        max-width: 50px;
+                        max-height: 50px;
                         border-radius: 50%;
                         overflow: hidden;
+
+                        img {
+                            object-position: center;
+                            object-fit: cover;
+                        }
                     }
 
                     p.time {
@@ -141,31 +152,19 @@
                 border-radius: 10px;
                 margin: 10px auto;
                 padding: 10px;
-                // position: relative;
-                // right: 15%;
 
                 display: flex;      
-                flex-direction: column-reverse;          
-                // justify-content: center;
-                // justify-items: center;
+                flex-direction: column-reverse; 
                 align-items: center;
-
-                
-                // border: 1px solid black;
-
 
                 p.chatMsg {
                     text-align: left;
                     width: 80%;
-                    // background-color: orange;
                     border-radius: 10px;
                     padding: 10px;
                     overflow: hidden;
                     text-align: center;
                     font-size: 2rem;
-
-                    // border: 1px solid red;
-
                 }
 
                 .avatar {
@@ -173,8 +172,6 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-
-                    // border: 1px solid blue;
                     
                     .imgContainer {
                         max-height: 50px;

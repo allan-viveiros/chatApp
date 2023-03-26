@@ -1,30 +1,17 @@
 import { getDatabase, ref, onValue, push } from "firebase/database";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import app from "../firebase.js";
 import Message from "./Message.js"
 
 const MessageDisplay = ({chatKey, sender}) => {
     // const [chatId, setChatId] = useState("");
     const [chats, setChats] = useState([]);
+
+    const bottomRef = useRef(null);
            
     console.log(chatKey);
     console.log(sender);
     // console.log(chatMessages);
-
-    // if(chatKey === "") {
-    //     console.log("LOADING 2...........");
-    // }
-
-    // useEffect(() => {
-    //     if(chatKey === ""){
-    //         console.log("there is no CHATKEY");
-    //     }
-    //     else {
-    //         console.log("chatKey");
-    //         console.log(chatKey);
-    //     }        
-
-    // }, [chatKey])
 
     useEffect(() => {        
         console.log(chatKey);
@@ -95,18 +82,15 @@ const MessageDisplay = ({chatKey, sender}) => {
 
 
     // console.log(chats);
+    useEffect(() => {        
+        bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [chats]);
 
 
 
     return(
         <section className="messagesDisplay">
-            <h2>Messages here</h2>
-            
-            {/* <p>Messages from {userSend}</p>
-            <p>To: {userRecip} </p> */}
-
-            {
-                
+            {                
                 chats.map((message, index) => {
                     return (
                         <Message 
@@ -119,7 +103,8 @@ const MessageDisplay = ({chatKey, sender}) => {
                     )
                 })
             }
-            
+
+            <div ref={bottomRef}></div>            
         </section>
     )
 }
