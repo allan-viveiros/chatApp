@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const UserInput = ({ handleSubmit }) => {
     const [userInputText, setUserInputText] = useState("");
@@ -7,7 +7,7 @@ const UserInput = ({ handleSubmit }) => {
         setUserInputText(e.target.value);
         console.log(e.target.value);
     }
-
+ 
     return(
         <section className="userInput">
             

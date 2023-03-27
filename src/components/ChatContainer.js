@@ -63,7 +63,7 @@ const ChatContainer = ({userSender}) => {
             setUsers(arrayOfUsers);
         }); 
         
-    }, []);
+    }, [userSender.userId]);
 
     useEffect(() => {
         console.log("User Recipient");
