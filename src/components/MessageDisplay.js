@@ -4,54 +4,34 @@ import app from "../firebase.js";
 import Message from "./Message.js"
 
 const MessageDisplay = ({chatKey, sender}) => {
-    // const [chatId, setChatId] = useState("");
     const [chats, setChats] = useState([]);
-
     const bottomRef = useRef(null);
-           
-    console.log(chatKey);
-    console.log(sender);
-    // console.log(chatMessages);
 
     useEffect(() => {        
-        console.log(chatKey);
-        
-        // console.log("useEffect message Display");
         const db = getDatabase(app);
         const dbRef = ref(db, `/chats/${chatKey}`); 
-        // const dbRef = ref(db, `/chats/${chatId}`); 
-        
-        console.log(dbRef);
 
+        // Request to Firebase to bring the chats stored and keep tracking for new ones
         onValue(dbRef, (result) => {
-            console.log(result.val());
+            if(result.val()) {                
+                const messagesObj = result.val();                
+                const arrMsg = [];
 
-            if(result.val()) {
-                console.log("result.val() exists");
-                
-                const messagesObj = result.val();
-                
-                const arr = [];
-                console.log(messagesObj);
-
+                //Store the old messages on an array of messages
                 for(let msg in messagesObj) {
-                    // console.log(msg);
-                    // console.log(messagesObj[msg]);
-
                     const newMsgObj = {
                         from: messagesObj[msg].from,
                         message: messagesObj[msg].message,
                         time: messagesObj[msg].time
                     }
                     
-                    arr.push(newMsgObj); 
+                    arrMsg.push(newMsgObj); 
                 } 
                 
-                setChats(arr);
+                setChats(arrMsg);
             }
             else {
-                console.log("result.val() DON'T exists");
-
+                // In case of new chat between the user sender and user recipient, create an Welcome message
                 const current = new Date().toString();        
                 const day = current.slice(8, 10);
                 const month = current.slice(4, 7);        
@@ -75,18 +55,13 @@ const MessageDisplay = ({chatKey, sender}) => {
                 const newChatInput = push(dbRef, inputChatObj);
                 console.log(newChatInput);
             }
-        });
-
-                   
+        });                   
     }, [chatKey]);
 
-
-    // console.log(chats);
+    // Tracking the new messages to automatic scroll down
     useEffect(() => {        
         bottomRef.current?.scrollIntoView({behavior: 'smooth'});
     }, [chats]);
-
-
 
     return(
         <section className="messagesDisplay">

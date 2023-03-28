@@ -1,12 +1,9 @@
 
 const Message = ({from, time, message, userSender}) => {
-    // console.log(message, userSender.userId);
     let classSwitch = "";
     let imgSwitch = "";
 
-    console.log(from);
-    console.log(userSender);
-
+    // Generate random robots image to the users
     if(from === userSender.userId) {
         classSwitch = "sender";
         imgSwitch = `https://robohash.org/${from}.png`;

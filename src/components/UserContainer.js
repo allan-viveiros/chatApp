@@ -61,7 +61,6 @@ const UserContainer = () => {
     // Use an useEffect hook to manipulate the virtual dom instead the dom itself
     window.addEventListener("beforeunload", (e) => {
         if(userSelected.userId !== undefined) {
-            console.log(userSelected.userId);
             const db = getDatabase(app);
             const dbRef = ref(db, `/users/${userSelected.userId}`);
             const userUpdate = { online: false }
@@ -93,17 +92,12 @@ const UserContainer = () => {
         }        
     }
 
-
-    useEffect(() => {
-        console.log("userSelect changed");
-        console.log(userSelected);
-
-    }, [userSelected]);
-
+    // Handle the new user button click to render the NewUser component
     const handleClick = () => {
         setRenderComponent("newUser");
     }
 
+    // Get the new user from NewUser component and push() to firebase
     const handleSubmitNewUserForm = (e, newUser) => {
         e.preventDefault();
 
@@ -115,6 +109,7 @@ const UserContainer = () => {
             online: true,
         }
 
+        // TODO - Make an Error handle to push
         const newUserInput = push(dbRef, newUserObj);
         newUserObj.userId = newUserInput._path.pieces_[1];  
 

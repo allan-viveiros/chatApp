@@ -5,7 +5,6 @@ const UserInput = ({ handleSubmit }) => {
 
     const handleChange = (e) => {
         setUserInputText(e.target.value);
-        console.log(e.target.value);
     }
  
     return(

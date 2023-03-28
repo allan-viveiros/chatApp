@@ -7,6 +7,7 @@ const UserToTalk = ({userArray, handleSubmit}) => {
         setSelectedValue(e.target.value);
     }
 
+    // Show all the users available to talk with and their status online/offline
     return(
         <div className="userToTalk">
             <h2> Select an user to Talk </h2>
@@ -18,7 +19,7 @@ const UserToTalk = ({userArray, handleSubmit}) => {
                     {
                         userArray.map((user) => {                            
                             return(   
-                                user.online === false
+                                user.online === true
                                 ?   <option key={user.userId} value={user.userId} className="online">{user.name}</option>
                                 :   <option key={user.userId} value={user.userId} className="offline">{user.name}</option>
                             )                            

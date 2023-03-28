@@ -6,7 +6,6 @@
 
 // main container
 .userContainer {
-    // border: 1px solid black;
     text-align: center;
     height: calc(100vh - 60px);
 
@@ -41,7 +40,6 @@
     }
 
     .userSelect {
-        // border: 1px solid green;
         height: 40vh;
 
         form {
@@ -65,11 +63,8 @@
                 padding: 0 10px;
                 background-color: white;
                 color:  #AD18D9;
-                // border: 1px solid white;
-                // border-radius: 20px;
                 border: none;
                 border-top: 1px solid white;
-                // font-weight: bold;
             }
         }
     }
@@ -81,16 +76,11 @@
         justify-content: space-between;
         height: 85vh;
         width: 100%;
-        // position: relative;
-        
-        // border: 1px solid red;   
         
         //Top section
         .userToTalk {
             width: 100%;
             height: 10%;
-
-            // border: 1px solid blue;
 
             form {
                 margin: 5px;
@@ -117,11 +107,8 @@
                     padding: 0 10px;
                     background-color: white;
                     color:  #AD18D9;
-                    // border: 1px solid white;
-                    // border-radius: 20px;
                     border: none;
                     border-top: 1px solid white;
-                    // font-weight: bold;
                 }
             }
         }
@@ -134,9 +121,6 @@
             scroll-behavior: auto;
             background-color: #f0f0f0;    
             color: black;
-            
-            // border: 1px solid black;
-
             display: flex;
             flex-direction: column;
             align-items: center;            
@@ -149,9 +133,6 @@
                 left: 20%;                   
                 display: flex;
                 justify-content: space-between;  
-                  
-                
-                // border: 1px solid red;
 
                 p.chatMsg {
                     text-align: right;
@@ -187,12 +168,9 @@
                 padding: 10px;
                 position: relative;
                 right: 19%;
-
                 display: flex;
                 flex-direction: row-reverse;
                 justify-content: space-between;   
-                
-                // border: 1px solid blue;
 
                 p.chatMsg {
                     text-align: left;
@@ -234,7 +212,6 @@
                 border-radius: 30px;
                 margin: 10px auto;
                 padding: 10px;
-
                 display: flex;      
                 flex-direction: column-reverse; 
                 align-items: center;
@@ -272,7 +249,6 @@
         // bottom section 
         .userInput {
             width: 100%;
-            // border: 1px solid green;
 
             form.flexForm {
                 display: flex;
@@ -287,12 +263,9 @@
 
                 button {
                     width: 20%;
-                    // border-radius: 20px;
-                    // border: 1px solid white;
                     color:  #AD18D9;
                     background-color:  white;
                     border: none;
-                    // font-weight: bold;
                     text-align: right;
                     padding-right: 10px;
                 }
