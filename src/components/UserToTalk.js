@@ -5,10 +5,7 @@ const UserToTalk = ({userArray, handleSubmit}) => {
 
     const handleChange = (e) => {
         setSelectedValue(e.target.value);
-        // console.log(e.target.value);
     }
-
-    // console.log(userArray);
 
     return(
         <div className="userToTalk">
@@ -20,8 +17,10 @@ const UserToTalk = ({userArray, handleSubmit}) => {
                     <option value="placeholder"> Select an user to talk with</option>
                     {
                         userArray.map((user) => {                            
-                            return(                                 
-                                <option key={user.userId} value={user.userId}>{user.name}</option>                                
+                            return(   
+                                user.online === false
+                                ?   <option key={user.userId} value={user.userId} className="online">{user.name}</option>
+                                :   <option key={user.userId} value={user.userId} className="offline">{user.name}</option>
                             )                            
                         })
                     }                    

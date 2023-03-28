@@ -111,7 +111,13 @@
 
     footer {
         margin-top: 10px;
-        height: 40px;
-        font-size: 0.8rem;       
+        height: 30px;
+        font-size: 0.8rem;  
+        padding: 5px 0;    
+        
+        .wrapper {
+            margin: 0;
+            padding: 0;
+        }
     }
 }

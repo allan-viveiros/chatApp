@@ -14,7 +14,7 @@ const UserContainer = () => {
         const db = getDatabase(app);
         const dbRef = ref(db, "/users");
 
-        //Get the users
+        //Get the users to fill the input selection
         onValue(dbRef, (respDB) => {
             if(respDB.exists()) {
                 const userObj = respDB.val();    
@@ -52,6 +52,8 @@ const UserContainer = () => {
             }
             else {
                 alert("There is no users to show!");
+
+                setRenderComponent("newUser");
             }
         });
     }, []);
@@ -67,17 +69,13 @@ const UserContainer = () => {
         }
     });
 
-    // console.log(users);
+    // Get the user selected to start chatting 
     const handleSubmitForm = (e, userId) => {
         e.preventDefault();
   
         if(userId !== "placeholder") {
-            // setUserSelected(userId);
-            console.log(userId);
-
             setRenderComponent("chat");
 
-            /// ********************* activate after tests ********** ////
             //update the user selected to online status
             const db = getDatabase(app);
             const dbRef = ref(db, `/users/${userId}`);
@@ -85,14 +83,9 @@ const UserContainer = () => {
             update(dbRef, userUpdate);            
 
             for(let key in users) {
-                // console.log(users[key].userId);
                 if(users[key].userId === userId) {
-                    // console.log(users[key]);
                     setUserSelected(users[key]);
                 }
-                // else {
-                //     console.log("NO Match");
-                // }
             }
         }
         else {
@@ -108,13 +101,11 @@ const UserContainer = () => {
     }, [userSelected]);
 
     const handleClick = () => {
-        // setNewUserSelected(true);
         setRenderComponent("newUser");
     }
 
     const handleSubmitNewUserForm = (e, newUser) => {
         e.preventDefault();
-        console.log(newUser);
 
         const db = getDatabase(app);
         const dbRef = ref(db, "/users");
@@ -123,19 +114,11 @@ const UserContainer = () => {
             name: newUser,
             online: true,
         }
-        
-        // setUserSelected(newUserObj);
 
         const newUserInput = push(dbRef, newUserObj);
-        console.log(newUserInput);
-        console.log(newUserInput._path.pieces_[1]);
-        console.log(userSelected);
-
-        newUserObj.userId = newUserInput._path.pieces_[1];
-        console.log(newUserObj);
+        newUserObj.userId = newUserInput._path.pieces_[1];  
 
         setUserSelected(newUserObj);
-
         setRenderComponent("chat");
     }
 
