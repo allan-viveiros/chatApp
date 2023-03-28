@@ -1,0 +1,117 @@
+// /* Portrait tablet and small desktops */
+// @media (max-width: 940px) {
+// }
+
+// /* Landscape phone to portrait tablet */
+// @media (max-width: 768px) {
+// }
+
+// /* Landscape phones and down */
+@media (max-width: 500px) {
+    // main container
+    .userContainer {
+        height: calc(100vh - 50px);
+
+        h1 {
+            letter-spacing: 0;
+        }
+
+        .userSelect {  
+            font-size: 0.9rem;
+
+            form {     
+                select#selectUser {
+                    width: 100%;
+                }
+
+                button#btnStartChat {
+                    width: 100%;
+                    margin: 5px 0;
+                }
+            }
+        }
+
+        // Container to group the whole chat components
+        .chatContainer {            
+            font-size: 0.9rem;
+            
+            //Top section
+            .userToTalk {              
+                height: fit-content;
+
+                form {
+                    select {
+                        width: 100%;
+                    }
+
+                    button {
+                        width: 100%;
+                        margin: 5px 0;
+                    }
+                }
+            }
+
+            // middle section
+            .messagesDisplay {
+                .sender { 
+                    width: 100%;
+                    margin: 10px 0;
+                    padding: 0;
+                    position: relative;
+                    left: 0;  
+                    justify-content: space-around;
+
+                    p.chatMsg {
+                        text-align: left;
+                        width: 75%;
+                    }
+
+                    .avatar {
+                        width: 20%;
+                    }
+                }
+
+                .recipient {
+                    width: 100%;
+                    margin: 10px 0;
+                    padding: 0;
+                    position: relative;
+                    left: 0;  
+                    justify-content: space-around;
+
+                    p.chatMsg {
+                        text-align: left;
+                        width: 75%;
+                    }
+
+                    .avatar {
+                        width: 20%;
+                    }
+                }
+
+                .messageApp {
+                    width: 95%;
+                
+                    p.chatMsg {
+                        font-size: 1rem;
+                    }
+
+                    .avatar {
+                        width: 100%;
+
+                        .imgContainer {
+                            width: 60px;
+                            height: 60px;
+                        }
+                    }
+                }
+            }  
+        }
+    }
+
+    footer {
+        margin-top: 10px;
+        height: 40px;
+        font-size: 0.8rem;       
+    }
+}

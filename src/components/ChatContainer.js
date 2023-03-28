@@ -12,6 +12,8 @@ const ChatContainer = ({userSender}) => {
     // const [userInput, setUserInput] = useState("");
     // const [messages, setMessages] = useState("");  
     
+    console.log(userSender);
+
     // connect with the database
     useEffect(() => {
         const db = getDatabase(app);
@@ -266,7 +268,7 @@ const ChatContainer = ({userSender}) => {
         // }
     }
 
-    const handleUserInput = (e, userInput) => {
+    const handleUserInput = (e, userInput, inputFunction) => {
         e.preventDefault();
 
         // console.log(userInput);
@@ -275,25 +277,28 @@ const ChatContainer = ({userSender}) => {
         // console.log(userRecipient);
         // console.log(userSender);
         // console.log(chatId);
+        if(userInput.trim() !== "") {
+            const current = new Date().toString();        
+            const day = current.slice(8, 10);
+            const month = current.slice(4, 7);        
+            const hour = current.slice(16, 21);
 
-        const current = new Date().toString();        
-        const day = current.slice(8, 10);
-        const month = current.slice(4, 7);        
-        const hour = current.slice(16, 21);
+            const inputObj = {
+                from: userSender.userId,
+                message: userInput,
+                time: `${month} ${day}, ${hour}`
+            }
 
-        const inputObj = {
-            from: userSender.userId,
-            message: userInput,
-            time: `${month} ${day}, ${hour}`
+            const db = getDatabase(app);
+            const dbRef = ref(db, `/chats/${chatKey}`);
+
+            // console.log(dbRef);
+
+            const fbObj = push(dbRef, inputObj);
+            console.log(fbObj); 
+            inputFunction(""); 
         }
-
-        const db = getDatabase(app);
-        const dbRef = ref(db, `/chats/${chatKey}`);
-
-        // console.log(dbRef);
-
-        const fbObj = push(dbRef, inputObj);
-        console.log(fbObj);            
+                  
     }
 
     if(chatKey === ""){

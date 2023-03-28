@@ -4,7 +4,8 @@ const Message = ({from, time, message, userSender}) => {
     let classSwitch = "";
     let imgSwitch = "";
 
-    console.log(userSender.userId);
+    console.log(from);
+    console.log(userSender);
 
     if(from === userSender.userId) {
         classSwitch = "sender";

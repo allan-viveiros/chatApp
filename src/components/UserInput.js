@@ -11,7 +11,7 @@ const UserInput = ({ handleSubmit }) => {
     return(
         <section className="userInput">
             
-            <form onSubmit={(e) => handleSubmit(e, userInputText)} className="flexForm">
+            <form onSubmit={(e) => handleSubmit(e, userInputText, setUserInputText)} className="flexForm">
                 <label htmlFor="userMessage" className="sr-only">Type your message</label>
                 <textarea 
                     type="text" 

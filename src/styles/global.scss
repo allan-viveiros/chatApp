@@ -6,6 +6,8 @@ html {
     background-color: #7654A6;
     font-size: 125%;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 *, *:before, *:after {box-sizing: inherit}
@@ -22,6 +24,9 @@ html {
     width: 100%;
     margin: 0 auto;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     // border: 1px solid greenyellow;
 }
