@@ -114,13 +114,10 @@ const ChatContainer = ({userSender}) => {
                 const dbRefSender = ref(db, `/users/${userSender.userId}/chats`);
                 const dbRefRecipient = ref(db, `/users/${userId}/chats`);
 
-                // TODO - Make an Error handle to Firebase push
-                const NewChatIdSender = push(dbRefSender, newChatIdSender);
-                console.log(NewChatIdSender);
+                // Push the chatKey in both users
+                push(dbRefSender, newChatIdSender);                
 
-                const NewChatIdRecipient = push(dbRefRecipient, newChatIdRecipient);
-                console.log(NewChatIdRecipient);
-
+                push(dbRefRecipient, newChatIdRecipient);
             }
         }
         else {
@@ -147,8 +144,7 @@ const ChatContainer = ({userSender}) => {
             const dbRef = ref(db, `/chats/${chatKey}`);
             
             // TODO - Make an Error handle to Firebase push
-            const fbObj = push(dbRef, inputObj);
-            console.log(fbObj);
+            push(dbRef, inputObj);
 
             inputFunction(""); 
         }                  
