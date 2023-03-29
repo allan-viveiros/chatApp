@@ -3,13 +3,14 @@
 @media (max-width: 500px) {
     // main container
     .userContainer {
-        height: calc(100vh - 50px);
+        height: calc(100dvh - 40px);
 
         h1 {
             letter-spacing: 0;
         }
 
         .userSelect {  
+            height: 40dvh;
             font-size: 0.9rem;
 
             form {     
@@ -25,7 +26,8 @@
         }
 
         // Container to group the whole chat components
-        .chatContainer {            
+        .chatContainer {      
+            height: 85dvh;      
             font-size: 0.9rem;
             
             //Top section
