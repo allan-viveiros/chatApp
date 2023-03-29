@@ -52,8 +52,7 @@ const MessageDisplay = ({chatKey, sender}) => {
 
                 setChats(arr);
             
-                const newChatInput = push(dbRef, inputChatObj);
-                console.log(newChatInput);
+                push(dbRef, inputChatObj);                
             }
         });                   
     }, [chatKey]);
