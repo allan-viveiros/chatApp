@@ -3,7 +3,7 @@
 @media (max-width: 500px) {
     // main container
     .userContainer {
-        height: calc(100dvh - 40px);
+        height: calc(100dvh - 30px);
 
         h1 {
             letter-spacing: 0;
@@ -27,7 +27,7 @@
 
         // Container to group the whole chat components
         .chatContainer {      
-            height: 85dvh;      
+            height: 84dvh;      
             font-size: 0.9rem;
             
             //Top section
@@ -106,8 +106,8 @@
 
     footer {
         margin-top: 10px;
-        height: 30px;
-        font-size: 0.8rem;  
+        height: 25px;
+        font-size: 0.7rem;  
         padding: 5px 0;    
         
         .wrapper {
