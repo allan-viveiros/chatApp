@@ -5,13 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCiYTdBeXXlXRBPvyX47sWYKhICkqiCEmQ",
+  apiKey: process.env.FB_API_KEY,
   authDomain: "chatapp-e6ead.firebaseapp.com",
   databaseURL: "https://chatapp-e6ead-default-rtdb.firebaseio.com",
   projectId: "chatapp-e6ead",
   storageBucket: "chatapp-e6ead.appspot.com",
-  messagingSenderId: "360165553336",
-  appId: "1:360165553336:web:3ade5e1e82e1ef103af04d"
+  messagingSenderId: process.env.FB_MSG_SENDER_ID,
+  appId: process.env.FB_APP_IP
 };
 
 // Initialize Firebase
