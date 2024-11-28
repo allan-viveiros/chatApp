@@ -1,0 +1,86 @@
+@media (max-width: 500px) {
+  .userContainer {
+    height: calc(100dvh - 30px);
+  }
+  .userContainer h1 {
+    letter-spacing: 0;
+  }
+  .userContainer .userSelect {
+    height: 40dvh;
+    font-size: 0.9rem;
+  }
+  .userContainer .userSelect form select#selectUser {
+    width: 100%;
+  }
+  .userContainer .userSelect form button#btnStartChat {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .userContainer .chatContainer {
+    height: 84dvh;
+    font-size: 0.9rem;
+  }
+  .userContainer .chatContainer .userToTalk {
+    height: fit-content;
+  }
+  .userContainer .chatContainer .userToTalk form select {
+    width: 100%;
+  }
+  .userContainer .chatContainer .userToTalk form button {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .userContainer .chatContainer .messagesDisplay .sender {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    justify-content: space-around;
+  }
+  .userContainer .chatContainer .messagesDisplay .sender p.chatMsg {
+    text-align: left;
+    width: 75%;
+  }
+  .userContainer .chatContainer .messagesDisplay .sender .avatar {
+    width: 20%;
+  }
+  .userContainer .chatContainer .messagesDisplay .recipient {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    justify-content: space-around;
+  }
+  .userContainer .chatContainer .messagesDisplay .recipient p.chatMsg {
+    text-align: left;
+    width: 75%;
+  }
+  .userContainer .chatContainer .messagesDisplay .recipient .avatar {
+    width: 20%;
+  }
+  .userContainer .chatContainer .messagesDisplay .messageApp {
+    width: 95%;
+  }
+  .userContainer .chatContainer .messagesDisplay .messageApp p.chatMsg {
+    font-size: 1rem;
+  }
+  .userContainer .chatContainer .messagesDisplay .messageApp .avatar {
+    width: 100%;
+  }
+  .userContainer .chatContainer .messagesDisplay .messageApp .avatar .imgContainer {
+    width: 60px;
+    height: 60px;
+  }
+  footer {
+    margin-top: 10px;
+    height: 25px;
+    font-size: 0.7rem;
+    padding: 5px 0;
+  }
+  footer .wrapper {
+    margin: 0;
+    padding: 0;
+  }
+}/*# sourceMappingURL=mediaQueries.css.map */

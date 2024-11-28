@@ -1,0 +1,237 @@
+@font-face {
+  font-family: "Patchy Robots";
+  src: url("./font/PatchyRobots-RzVe.ttf");
+}
+.userContainer {
+  text-align: center;
+  height: calc(100vh - 60px);
+}
+.userContainer h1 {
+  margin: 10px 0;
+  font-family: "Patchy Robots";
+  letter-spacing: 2px;
+  color: rgb(247, 231, 88);
+}
+.userContainer button {
+  border: none;
+  padding: 5px 10px;
+  background-color: white;
+  color: #AD18D9;
+}
+.userContainer .newUser .newUserForm input {
+  height: 35px;
+  padding: 0 10px;
+  margin: 0;
+}
+.userContainer .newUser .newUserForm button {
+  height: 35px;
+  border: none;
+  margin-left: 5px;
+}
+.userContainer .userSelect {
+  height: 40vh;
+}
+.userContainer .userSelect form {
+  margin: 10px;
+}
+.userContainer .userSelect form h2 {
+  margin-bottom: 5px;
+}
+.userContainer .userSelect form select#selectUser {
+  border: none;
+  background-color: #CABCDC;
+  height: 35px;
+  margin: 0;
+  padding: 0 10px;
+}
+.userContainer .userSelect form button#btnStartChat {
+  height: 35px;
+  margin: 0 5px;
+  padding: 0 10px;
+  background-color: white;
+  color: #AD18D9;
+  border: none;
+  border-top: 1px solid white;
+}
+.userContainer .chatContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85vh;
+  width: 100%;
+}
+.userContainer .chatContainer .userToTalk {
+  width: 100%;
+  height: 10%;
+}
+.userContainer .chatContainer .userToTalk form {
+  margin: 5px;
+}
+.userContainer .chatContainer .userToTalk form select {
+  border: none;
+  background-color: #CABCDC;
+  height: 35px;
+  margin: 0;
+  padding: 0 10px;
+}
+.userContainer .chatContainer .userToTalk form select option.online {
+  color: green;
+}
+.userContainer .chatContainer .userToTalk form select option.offline {
+  color: red;
+}
+.userContainer .chatContainer .userToTalk form button {
+  height: 35px;
+  margin: 0 5px;
+  padding: 0 10px;
+  background-color: white;
+  color: #AD18D9;
+  border: none;
+  border-top: 1px solid white;
+}
+.userContainer .chatContainer .messagesDisplay {
+  height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: auto;
+  background-color: #f0f0f0;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userContainer .chatContainer .messagesDisplay .sender {
+  width: 60%;
+  margin: 10px 0;
+  padding: 10px;
+  position: relative;
+  left: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+.userContainer .chatContainer .messagesDisplay .sender p.chatMsg {
+  text-align: right;
+  width: 80%;
+  background-color: #CABCDC;
+  border-radius: 20px;
+  padding: 10px;
+  overflow: hidden;
+}
+.userContainer .chatContainer .messagesDisplay .sender .avatar {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userContainer .chatContainer .messagesDisplay .sender .avatar .imgContainer {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userContainer .chatContainer .messagesDisplay .sender .avatar p.time {
+  font-size: 0.7rem;
+}
+.userContainer .chatContainer .messagesDisplay .recipient {
+  width: 60%;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  right: 19%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.userContainer .chatContainer .messagesDisplay .recipient p.chatMsg {
+  text-align: left;
+  width: 80%;
+  background-color: #36274B;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  overflow: hidden;
+}
+.userContainer .chatContainer .messagesDisplay .recipient .avatar {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userContainer .chatContainer .messagesDisplay .recipient .avatar .imgContainer {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userContainer .chatContainer .messagesDisplay .recipient .avatar .imgContainer img {
+  object-position: center;
+  object-fit: cover;
+}
+.userContainer .chatContainer .messagesDisplay .recipient .avatar p.time {
+  font-size: 0.7rem;
+}
+.userContainer .chatContainer .messagesDisplay .messageApp {
+  background-color: #A9BAFB;
+  width: 80%;
+  border-radius: 30px;
+  margin: 10px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.userContainer .chatContainer .messagesDisplay .messageApp p.chatMsg {
+  text-align: left;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 2rem;
+}
+.userContainer .chatContainer .messagesDisplay .messageApp .avatar {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userContainer .chatContainer .messagesDisplay .messageApp .avatar .imgContainer {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userContainer .chatContainer .messagesDisplay .messageApp .avatar p.time {
+  font-size: 0.7rem;
+}
+.userContainer .chatContainer .userInput {
+  width: 100%;
+}
+.userContainer .chatContainer .userInput form.flexForm {
+  display: flex;
+  justify-content: space-between;
+}
+.userContainer .chatContainer .userInput form.flexForm textarea {
+  width: 80%;
+  resize: none;
+  padding: 5px;
+  border: 1px solid white;
+}
+.userContainer .chatContainer .userInput form.flexForm button {
+  width: 20%;
+  color: #AD18D9;
+  background-color: white;
+  border: none;
+  text-align: right;
+  padding-right: 10px;
+}
+
+footer {
+  background-color: #49B6FF;
+  color: rgba(0, 0, 0, 0.678);
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}/*# sourceMappingURL=userContainer.css.map */
