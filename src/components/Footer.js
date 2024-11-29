@@ -1,10 +1,16 @@
-
+import { useState, useEffect } from "react";
 
 const Footer = () => {
+    const [currentYear, setCurrentYear] = useState();
+
+    useEffect( () => {
+        setCurrentYear(new Date().getFullYear());
+    }, []);
+
     return(
         <footer>
             <div className="wrapper">
-                <p>Create at Juno College 2023 by Allan Viveiros</p>
+                <p>© {currentYear} by Allan Viveiros </p>
             </div>            
         </footer>
     )
