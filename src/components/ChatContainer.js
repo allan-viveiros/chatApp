@@ -153,7 +153,6 @@ const ChatContainer = ({userSender}) => {
     return(
         <section className="chatContainer">
             <UserToTalk userArray={users} handleSubmit={handleSubmitForm}/>
-
             {
                 userRecipient !== "" 
                 ?  <>   

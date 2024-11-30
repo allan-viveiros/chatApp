@@ -5,6 +5,8 @@ import User from "./User.js";
 import ChatContainer from "./ChatContainer.js";
 import NewUser from "./NewUser.js";
 
+import ExitApp from "./ExitApp.js";
+
 const UserContainer = () => {
     const [users, setUsers] = useState([]);
     const [userSelected, setUserSelected] = useState("");
@@ -101,6 +103,8 @@ const UserContainer = () => {
     const handleSubmitNewUserForm = (e, newUser) => {
         e.preventDefault();
 
+        // TODO - Check if the user name is empty or already exists before push to Firebase.
+
         const db = getDatabase(app);
         const dbRef = ref(db, "/users");
 
@@ -122,7 +126,8 @@ const UserContainer = () => {
             <h1>Chat Robots</h1>   
             <span className="dev">(DEV)</span>       
             
-            <div className="wrapper">             
+            <div className="wrapper">
+                <ExitApp></ExitApp>
                 {
                     renderComponent === "all"
                     ?<div>

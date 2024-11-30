@@ -3,7 +3,7 @@ import { useState } from "react";
 const NewUser = ({handleSubmitNewUser}) => {
     const [newUserName, setNewUserName] = useState("");
 
-    const handleChange = (e) => {
+    const handleChange = (e) => {        
         setNewUserName(e.target.value);
     }
 
